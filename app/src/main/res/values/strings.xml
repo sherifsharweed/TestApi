@@ -3,4 +3,9 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="enterUrl">Enter URL</string>
+    <string name="response">Response</string>
+    <string name="enterHeaders">Enter Headers</string>
+    <string name="get">Get</string>
+    <string name="post">Post</string>
 </resources>
