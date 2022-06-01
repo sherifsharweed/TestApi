@@ -1,4 +1,4 @@
-package com.shekoo.testapi.ui.home
+package com.shekoo.testapi.ui.get
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -10,7 +10,7 @@ import java.lang.StringBuilder
 import java.net.HttpURLConnection
 import java.net.URL
 
-class HomeViewModel : ViewModel() {
+class GetViewModel : ViewModel() {
 
     private var _getResponse : MutableLiveData<String> = MutableLiveData()
     var getResponse : LiveData<String> = _getResponse
@@ -24,6 +24,7 @@ class HomeViewModel : ViewModel() {
             getResponse = _getResponse
         } else {
             Log.i("TAG", responseCode.toString())
+            _getResponse.postValue(responseCode.toString())
         }
         httpURLConnection.disconnect()
     }
@@ -48,7 +49,11 @@ class HomeViewModel : ViewModel() {
         val map: Map<String, List<String>> = httpURLConnection.headerFields
         for ((key, value) in map) {
             result.append("\n")
-            result.append(key).append(value)
+            if (key.isNullOrEmpty()) {
+                result.append(value)
+            } else {
+                result.append(key).append(value)
+            }
         }
         // Convert raw JSON to pretty JSON using GSON library
         val gson = GsonBuilder().setPrettyPrinting().create()

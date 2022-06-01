@@ -4,35 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.get.GetFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/getButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="124dp"
             android:text="@string/get"
-            app:layout_constraintEnd_toEndOf="@+id/urlText"
+            app:layout_constraintEnd_toEndOf="@+id/getUrlText"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="20dp"
             android:text="@string/enterUrl"
-            android:textColor="@color/design_default_color_on_secondary"
+            android:textColor="@color/fontColor"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/urlText"
+            android:id="@+id/getUrlText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
@@ -42,32 +42,34 @@
             android:hint="@string/enterUrl"
             android:inputType="textPersonName"
             android:minHeight="48dp"
+            android:textColor="@color/lightFontColor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/textView1"
+            android:autofillHints="" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
             android:text="@string/enterHeaders"
-            android:textColor="@color/design_default_color_on_secondary"
+            android:textColor="@color/fontColor"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/urlText" />
+            app:layout_constraintTop_toBottomOf="@+id/getUrlText" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="160dp"
+            android:layout_marginTop="10dp"
             android:text="@string/response"
-            android:textColor="@color/design_default_color_on_secondary"
+            android:textColor="@color/fontColor"
             android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="@+id/textView3"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="@+id/textView2"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
         <TextView
             android:id="@+id/getResponseTextView"
@@ -76,9 +78,15 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="7dp"
             android:layout_marginEnd="15dp"
+            android:background="@drawable/rounded"
+            android:paddingStart="5dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="5dp"
+            android:paddingBottom="5dp"
+            android:textColor="@color/fontColor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
             tools:text="TextView" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

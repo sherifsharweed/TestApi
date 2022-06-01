@@ -5,7 +5,11 @@
     <string name="title_notifications">Notifications</string>
     <string name="enterUrl">Enter URL</string>
     <string name="response">Response</string>
-    <string name="enterHeaders">Enter Headers</string>
+    <string name="enterHeaders">Headers</string>
     <string name="get">Get</string>
     <string name="post">Post</string>
+    <string name="postBody">Post Body</string>
+    <string name="addBody">Add To Body</string>
+    <string name="key">Key</string>
+    <string name="value">Value</string>
 </resources>

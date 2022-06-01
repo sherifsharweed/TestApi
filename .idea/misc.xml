@@ -3,9 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/TestApi/app/src/main/res/drawable/ic_baseline_arrow_forward_24.xml" value="0.222" />
+        <entry key="..\:/TestApi/app/src/main/res/drawable/rounded.xml" value="0.222" />
         <entry key="..\:/TestApi/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/TestApi/app/src/main/res/layout/fragment_dashboard.xml" value="0.25416666666666665" />
         <entry key="..\:/TestApi/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/TestApi/app/src/main/res/layout/item_key_value.xml" value="0.25416666666666665" />
+        <entry key="..\:/TestApi/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/TestApi2/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
       </map>
     </option>
