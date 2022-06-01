@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonParser
+import com.shekoo.testapi.utility.Header
 import com.shekoo.testapi.utility.PostBody
 import org.json.JSONObject
 import java.io.OutputStreamWriter
@@ -18,7 +19,7 @@ class PostViewModel : ViewModel() {
     private var _postResponse: MutableLiveData<String> = MutableLiveData()
     var postResponse: LiveData<String> = _postResponse
 
-    fun postMethod(url: String, bodyList: List<PostBody>) {
+    fun postMethod(url: String, bodyList: List<PostBody> , headerList : List<Header>) {
 
         // Create JSON using JSONObject
         val jsonObject = JSONObject()
@@ -28,7 +29,7 @@ class PostViewModel : ViewModel() {
         // Convert JSONObject to String
         val jsonObjectString = jsonObject.toString()
 
-        val httpURLConnection = makeHttpUrlConnection(url, jsonObjectString)
+        val httpURLConnection = makeHttpUrlConnection(url, jsonObjectString , headerList)
         val responseCode = httpURLConnection.responseCode
         if (responseCode == HttpURLConnection.HTTP_OK) {
             _postResponse.postValue(collectResponse(httpURLConnection))
@@ -40,12 +41,11 @@ class PostViewModel : ViewModel() {
         httpURLConnection.disconnect()
     }
 
-    private fun makeHttpUrlConnection(url: String, jsonObjectString: String): HttpURLConnection {
+    private fun makeHttpUrlConnection(url: String, jsonObjectString: String , headerList: List<Header>): HttpURLConnection {
         val httpURLConnection = URL(url).openConnection() as HttpURLConnection
-        /*httpURLConnection.setRequestProperty(
-            "Accept",
-            "application/json"
-        )*/
+        for(item in headerList){
+            httpURLConnection.setRequestProperty(item.key,item.value)
+        }
         httpURLConnection.requestMethod = "POST"
         httpURLConnection.doInput = true
         httpURLConnection.doOutput = true
