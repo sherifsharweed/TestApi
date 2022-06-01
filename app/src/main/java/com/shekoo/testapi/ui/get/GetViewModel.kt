@@ -24,7 +24,6 @@ class GetViewModel : ViewModel() {
             _getResponse.postValue(collectResponse(httpURLConnection))
             getResponse = _getResponse
         } else {
-            Log.i("TAG", responseCode.toString())
             _getResponse.postValue(responseCode.toString())
         }
         httpURLConnection.disconnect()
@@ -47,7 +46,7 @@ class GetViewModel : ViewModel() {
         val result: StringBuilder = StringBuilder()
         val response = httpURLConnection.inputStream.bufferedReader()
             .use { it.readText() }
-        val map: Map<String, List<String>> = httpURLConnection.headerFields
+        val map: Map<String?, List<String>> = httpURLConnection.headerFields
         for ((key, value) in map) {
             result.append("\n")
             if (key.isNullOrEmpty()) {

@@ -21,12 +21,10 @@ class PostViewModel : ViewModel() {
 
     fun postMethod(url: String, bodyList: List<PostBody> , headerList : List<Header>) {
 
-        // Create JSON using JSONObject
         val jsonObject = JSONObject()
         for (item in bodyList) {
             jsonObject.put(item.key, item.value)
         }
-        // Convert JSONObject to String
         val jsonObjectString = jsonObject.toString()
 
         val httpURLConnection = makeHttpUrlConnection(url, jsonObjectString , headerList)
@@ -35,7 +33,6 @@ class PostViewModel : ViewModel() {
             _postResponse.postValue(collectResponse(httpURLConnection))
             postResponse = _postResponse
         } else {
-            Log.i("TAG", responseCode.toString())
             _postResponse.postValue(responseCode.toString())
         }
         httpURLConnection.disconnect()
@@ -49,7 +46,7 @@ class PostViewModel : ViewModel() {
         httpURLConnection.requestMethod = "POST"
         httpURLConnection.doInput = true
         httpURLConnection.doOutput = true
-        // Send the JSON we created
+
         val outputStreamWriter = OutputStreamWriter(httpURLConnection.outputStream)
         outputStreamWriter.write(jsonObjectString)
         outputStreamWriter.flush()
@@ -62,7 +59,7 @@ class PostViewModel : ViewModel() {
         val response = httpURLConnection.inputStream.bufferedReader()
             .use { it.readText() }
         // Get headers in response
-        val map: Map<String, List<String>> = httpURLConnection.headerFields
+        val map: Map<String?, List<String>> = httpURLConnection.headerFields
         for ((key, value) in map) {
             result.append("\n")
             if (key.isNullOrEmpty()) {
@@ -71,7 +68,6 @@ class PostViewModel : ViewModel() {
                 result.append(key).append(value)
             }
         }
-        // Convert raw JSON to pretty JSON using GSON library
         val gson = GsonBuilder().setPrettyPrinting().create()
         val prettyJson = gson.toJson(JsonParser.parseString(response))
         result.append(prettyJson)
